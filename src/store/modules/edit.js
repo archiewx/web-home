@@ -1,0 +1,22 @@
+import axios from 'config/axios'
+import * as types from '../mutation-types'
+
+export default {
+  namespaced: true,
+  state: () => ({}),
+  getters: {},
+  actions: {
+    async createPost({ commit }, payload) {
+      const res = await axios.post('/blog/edit', payload)
+      if (res.success) {
+        return commit({
+          type: types.REQUEST_CREATE_POST
+        })
+      }
+      commit(types.REQUEST_ERROR, { data: res }, { root: true })
+    }
+  },
+  mutations: {
+    [types.REQUEST_CREATE_POST](state, payload) {}
+  }
+}

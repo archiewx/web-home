@@ -1,0 +1,82 @@
+// 像素转rem
+@function px2rem($px, $exisUnit: true) {
+  $rem: 37.5px;
+  @if $exisUnit == false {
+    $rem: 37.5;
+  }
+  @return ($px / $rem) + rem;
+}
+
+$defaultGroup: block;
+// 色彩
+$color-stack: (group: block, id: 33, color: #333333), (group: block, id: 99, color: #999999),
+  (group: block, id: 66, color: #666666), (group: block, id: ef, color: #e7e6e8),
+  (group: block, id: f6, color: #f6f6f6), (group: white, id: ff, color: #fff),
+  (group: prink, id: f6, color: #f67171), (group: blur, id: f78, color: #f78b6b),
+  (group: blur, id: a0b, color: #a0bd93), (group: blur, id: ecd, color: #ecd2a5),
+  (group: blur, id: e67, color: #e67e7e), (group: blur, id: 4d5, color: #4d5452),
+  (group: msg, id: ff5, color: #FF576D);
+@function color($shade: 33, $group: $defaultGroup, $transparency: 1) {
+  @each $color in $color-stack {
+    $c-group: map-get($map: $color, $key: group);
+    $c-shade: map-get($map: $color, $key: id);
+    @if ($group == $c-group and $shade == $c-shade) {
+      @return rgba(map-get($color, color), $transparency);
+    }
+  }
+}
+
+// 字体
+$font-stack: (
+    group: brandon,
+    id: light,
+    font: ('Brandon Grot W01 Light', san-serif),
+    weight: 200,
+    style: normal
+  ),
+  (
+    group: brandon,
+    id: light-italic,
+    font: ('Brandon Grot W01 Light', san-serif),
+    weight: 200,
+    style: italic
+  ),
+  (
+    group: brandon,
+    id: regular,
+    font: ('Brandon Grot W01-Regular', san-serif),
+    weight: 400,
+    style: normal
+  ),
+  (
+    group: brandon,
+    id: regular-italic,
+    font: ('Brandon Grot W01-Regular', san-serif),
+    weight: 400,
+    style: italic
+  ),
+  (
+    group: brandon,
+    id: bold,
+    font: ('Brandon Grot W01 Black', san-serif),
+    weight: 700,
+    style: normal
+  ),
+  (
+    group: brandon,
+    id: bold-italic,
+    font: ('Brandon Grot W01-Regular', san-serif),
+    weight: 400,
+    style: italic
+  ),
+  (group: clarendon, id: regular, font: ('Clarendon LT W01', serif), weight: 200, style: normal),
+  (group: code, id: regular, font: (monospace), weight: 400, style: normal); // Breakpoint Mixin
+@mixin font($group, $id: regular) {
+  @each $font in $font-stack {
+    @if ($group == map-get($font, group) and $id == map-get($font, id)) {
+      font-family: map-get($font, font);
+      font-weight: map-get($font, weight);
+      font-style: map-get($font, style);
+    }
+  }
+}

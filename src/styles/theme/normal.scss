@@ -1,0 +1,249 @@
+@mixin abs-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+@mixin normal {
+  $startColor: #eeedf2;
+  $endColor: #7b6a63;
+  $borderRadius: 3px;
+
+  @keyframes leftRight {
+    0% {
+      transform: translate(-100%, 0);
+    }
+    100% {
+      transform: tranlate(0, 0);
+    }
+  }
+
+  @keyframes rightLeft {
+    0% {
+      transform: translate(100%, 0);
+    }
+    100% {
+      transform: tranlate(0, 0);
+    }
+  }
+
+  @keyframes topToBottom {
+    0% {
+      transform: translate(0, -100%);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: tranlate(0, 0);
+    }
+  }
+
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .top {
+    animation: leftRight 0.5s ease-in;
+    height: 70%;
+    width: 100%;
+    background: -webkit-linear-gradient(left, $startColor, $endColor);
+    background: -o-linear-gradient(right, $startColor, $endColor);
+    background: -moz-linear-gradient(right, $startColor, $endColor);
+    background: linear-gradient(to right, $startColor, $endColor);
+  }
+
+  .bottom {
+    height: 30%;
+    width: 100%;
+    background-color: #fff;
+    animation: rightLeft 0.5s ease-in;
+  }
+
+  .main {
+    @include abs-center;
+    height: 700px;
+    width: 600px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+    animation: topToBottom 0.8s ease-out;
+  }
+
+  .header {
+    width: 60%;
+    margin: 0 auto;
+    color: #fff;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    li {
+      flex: 1;
+      text-align: center;
+    }
+    a {
+      display: inline-block;
+      padding: 24px 0;
+      width: 100%;
+      transition: all 0.3s ease-out;
+    }
+    .active {
+      background: #16e7a5;
+      border-bottom-left-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+
+  .box {
+    color: #fff;
+    .pic {
+      background: url('../images/迷幻.jpeg') no-repeat;
+      background-size: cover;
+      width: 80px;
+      height: 80px;
+      border-radius: 80px;
+      margin: 0 auto;
+      margin-top: 16px;
+      border: 3px solid #ccc;
+    }
+    .name {
+      margin-top: 16px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .content {
+      text-align: center;
+    }
+    .content-tl {
+      width: 50%;
+      margin: 0 auto;
+      height: 420px;
+      margin-top: 16px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 1px;
+        color: #888;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: #1e1b1b;
+      }
+      p {
+        text-align: left;
+      }
+    }
+    .content-tag {
+      margin: 8px;
+    }
+  }
+
+  .footer {
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    a {
+      font-size: 14px;
+      display: inline-block;
+      padding: 8px 16px;
+      margin-top: 8px;
+      border-bottom: 2px solid transparent;
+      &:hover {
+        border-bottom-color: #fff;
+      }
+    }
+    li:after {
+      content: '|';
+    }
+    li:last-child:after {
+      content: '';
+    }
+  }
+
+  .app-disque {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .app-disque__box {
+    background: #fff;
+    width: 60%;
+    padding: 36px 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .app-disque__close {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    color: #1e1b1b;
+    width: 32px;
+    height: 32px;
+    z-index: 6;
+    display: none;
+  }
+
+  .app-side__media--icon {
+    display: none;
+  }
+
+  // 小于 480px 生效
+  @media screen and (max-width: 480px) {
+    .main {
+      width: 100%;
+      height: 100%;
+    }
+    .app-side__btn {
+      display: none;
+    }
+    .app-side__media--icon {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      color: #ccc;
+      display: inline-block;
+      font-size: 40px;
+      z-index: 1;
+    }
+    .app-disque__box {
+      width: 100%;
+    }
+    .app-disque__close {
+      display: block;
+    }
+    .box {
+      .content-tl {
+        padding: 20px;
+        width: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+menus: [
+  { name: '简介', active: true },
+  { name: '技能', active: false },
+  { name: '动态', active: false },
+  { name: '联系', active: false }
+],
+introduce: {},
+talent: {
+  title: {
+    text: '技能掌握图',
+    subtext: '截止2017.9',
+    x: 'center',
+    textStyle: {
+      color: '#fff'
+    }
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter(params) {
+      return `${params.name}掌握程度: ${params.value}%<br /> 学习时间: 从${
+        params.data.startTime
+      }到 ${params.data.endTime}`
+    }
+  },
+  legend: {
+    x: 'center',
+    y: 'bottom',
+    data: [
+      { name: 'javascript', icon: 'circle' },
+      { name: 'php', icon: 'circle' },
+      { name: 'macos', icon: 'circle' },
+      { name: 'linux', icon: 'circle' },
+      { name: 'mongodb', icon: 'circle' },
+      { name: 'mysql', icon: 'circle' },
+      { name: 'python', icon: 'circle' }
+    ],
+    textStyle: {
+      color: '#fff'
+    }
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      magicType: {
+        show: true,
+        type: ['pie', 'funnel']
+      },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  calculable: true,
+  series: [
+    {
+      name: '掌握程度',
+      type: 'pie',
+      radius: [30, 110],
+      center: ['50%', '50%'],
+      roseType: 'area',
+      data: [
+        {
+          value: 70,
+          name: 'javascript',
+          startTime: '2014年 11月',
+          endTime: '至今'
+        },
+        {
+          value: 40,
+          name: 'php',
+          startTime: '2015年 3月',
+          endTime: '至今'
+        },
+        {
+          value: 80,
+          name: 'macos',
+          startTime: '2016年 12月',
+          endTime: '至今'
+        },
+        {
+          value: 45,
+          name: 'linux',
+          startTime: '2015年 10月',
+          endTime: '至今'
+        },
+        {
+          value: 30,
+          name: 'mongodb',
+          startTime: '2016年 6月',
+          endTime: '至今'
+        },
+        {
+          value: 45,
+          name: 'mysql',
+          startTime: '2014年 12月',
+          endTime: '至今'
+        },
+        {
+          value: 60,
+          name: 'python',
+          startTime: '2017年 6月',
+          endTime: '至今'
+        }
+      ]
+    }
+  ]
+},
+dynamic: [
+  {
+    time: '至今',
+    address: '杭州',
+    event: '就职杭州遥望网络股份有限公司，生活还在继续...'
+  },
+  {
+    time: '2017年 12月',
+    address: '杭州',
+    event: '在杭州青蜂网络已经快一年多了，持续学习中...'
+  },
+  {
+    time: '2016年 11月',
+    address: '武汉',
+    event: '认识了现在的小女朋友，温柔体贴，笑容好看，迷住了⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄...'
+  },
+  {
+    time: '2016年 10月',
+    address: '杭州',
+    event: '就职一家农村电商的互联网公司，做前端开发，苦逼的加班，苦逼的生活由此开始...'
+  },
+  {
+    time: '2015年 12月',
+    address: '十堰',
+    event:
+      '参与大学师兄的创业项目，第一次看到自己做的东西出现在世人的眼中，项目大量采用了jquery'
+  },
+  {
+    time: '2015年 9月',
+    address: '十堰',
+    event: '开始接触计算机编程，了解无边无际的计算机世界'
+  },
+  { time: '2013年 9月', address: '十堰', event: '进入xxx大学读书' }
+],
+contact: [
+  { type: 'social-google', name: '谷歌邮箱', way: 'zhenglfsir@gmail.com' },
+  { type: 'chatbubbles', name: '微信', way: 'zlf-559262' },
+  {
+    type: 'social-chrome',
+    name: 'CSDN',
+    url: 'http://blog.csdn.net/edishenya'
+  },
+  {
+    type: 'social-chrome',
+    name: 'SegmentFault',
+    url: 'https://segmentfault.com/blog/triste'
+  }
+]

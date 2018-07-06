@@ -28,7 +28,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'zsirfs',
-      host: '47.94.112.108',
+      host: '47.97.112.108',
       ref: 'origin/master',
       repo: 'https://github.com/zsirfs/web-home.git',
       path: '$HOME/websites/',

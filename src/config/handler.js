@@ -1,8 +1,6 @@
 export default (Vue) => {
-  Vue.config.errorHandler = (err, vm, info){
+  Vue.config.errorHandler = (err, vm, info) => {
     console.log(err, vm, info)
   }
-  Vue.config.warnHandler = (msg, vm, trace) {
-
-  }
+  Vue.config.warnHandler = (msg, vm, trace) => {}
 }

@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 function request() {
   const instance = axios.create({
-    baseURL: !isProd ? 'http://rap2api.taobao.org/app/mock/16336' : 'http://sys.luoyangfu.com'
+    baseURL: !isProd ? 'http://rap2api.taobao.org/app/mock/16336' : 'https://sys.luoyangfu.com'
   })
   instance.interceptors.request.use(
     (config) => {

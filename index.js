@@ -145,6 +145,20 @@ app.get(
 )
 
 const port = process.env.PORT || 3001
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`)
+
+const server = require('http').createServer(app)
+
+server.listen(port, () => {
+  console.log(`server started at http://localhost:${server.address().port}`)
+  process.send('ready')
+})
+
+process.on('SIGINT', () => {
+  console.info('SIGINT signal received.')
+  server.close(function(err) {
+    if (err) {
+      console.error(err)
+      process.exit(1)
+    }
+  })
 })

@@ -37,7 +37,8 @@ module.exports = {
       repo: 'https://github.com/zsirfs/web-home.git',
       path: '/home/zsirfs/websites/web-home',
       'post-setup': 'ls -la',
-      'post-deploy': 'yarn && pm2 reload ecosystem.config.js --env production'
+      'pre-deploy': 'yarn',
+      'post-deploy': 'yarn build && pm2 reload ecosystem.config.js --env production'
     }
   }
 }

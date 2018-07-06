@@ -8,7 +8,7 @@ module.exports = {
     {
       name: 'home',
       script: './index.js',
-      cwd: '$HOME/websites/web-home',
+      cwd: '$HOME/code/websites/web-home',
       env: {
         NODE_ENV: 'development'
       },

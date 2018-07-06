@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development supervisor -w index.js,build -n error --inspect -- index.js",
-    "deploy": "NODE_ENV=production pm2 start index.js --name 'home'",
+    "deploy": "pm2 deploy ecosystem.config.js production",
     "start": "NODE_ENV=production node index.js",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "pm2:setup": "pm2 deploy production setup",

@@ -35,7 +35,7 @@ module.exports = {
       host: '47.97.112.108',
       ref: 'origin/master',
       repo: 'https://github.com/zsirfs/web-home.git',
-      path: '/home/zsirfs/websites/',
+      path: '/home/zsirfs/websites/web-home',
       'post-setup': 'ls -la',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
     }

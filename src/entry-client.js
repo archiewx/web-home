@@ -25,7 +25,6 @@ routerGuards(router)
 
 router.onReady(() => {
   router.beforeResolve((to, from, next) => {
-    console.log('resolve')
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)
     let diffed = false

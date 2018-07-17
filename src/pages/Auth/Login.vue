@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <div class="btn btn-primary login-btn" @click="testAPI">授 权</div>
+          <div class="btn btn-primary login-btn" @click="handleLogin">授 权</div>
           <router-link class="login-back dog-fs-px-12" to="/">返回&gt;&gt;</router-link>
           <div class="form-bottom">
             <!-- <div id="fb-root">

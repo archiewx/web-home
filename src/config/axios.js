@@ -2,7 +2,7 @@ import axios from 'axios'
 import NProgress from 'nprogress'
 
 const isProd = process.env.NODE_ENV === 'production'
-const isClient = !!this.document
+const isClient = () => !!global['document']
 
 function request() {
   if (isClient) {
@@ -19,7 +19,7 @@ function request() {
   })
   instance.interceptors.request.use(
     (config) => {
-      if (isClient) {
+      if (isClient()) {
         NProgress.start()
         const token = window.sessionStorage.token
         config.headers = config.headers || {}
@@ -33,7 +33,7 @@ function request() {
   )
   instance.interceptors.response.use(
     (response) => {
-      isClient && NProgress.done()
+      isClient() && NProgress.done()
       if (response) {
         return response.data
       }

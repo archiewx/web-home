@@ -15,7 +15,7 @@ export default {
       if (res.success) {
         return commit(types.REQUEST_EIDT_CONFIG, { data: res.data })
       }
-      // commit(types.REQUEST_ERROR, { data: res }, { root: true })
+      commit(types.REQUEST_ERROR, { data: res }, { root: true })
     }
   },
   mutations: {

@@ -13,7 +13,7 @@ export default {
           type: types.REQUEST_CREATE_POST
         })
       }
-      // commit(types.REQUEST_ERROR, { data: res }, { root: true })
+      commit(types.REQUEST_ERROR, { data: res }, { root: true })
     }
   },
   mutations: {

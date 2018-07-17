@@ -1,7 +1,7 @@
 /* eslint-disable */
 const isDev = process.env.NODE_ENV !== 'production'
-export default () => {
-  if (!isDev) {
+export default (Vue, option = { enabled: true }) => {
+  if (!isDev && option.enabled) {
     ;(function(h, o, t, j, a, r) {
       h.hj =
         h.hj ||

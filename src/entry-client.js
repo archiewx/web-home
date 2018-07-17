@@ -10,7 +10,7 @@ import handler from './config/handler'
 import facebook from './config/facebook'
 
 Vue.use(mavonEditor)
-Vue.use(hotjar)
+Vue.use(hotjar, { enabled: false })
 Vue.use(facebook, { enabled: false })
 Vue.use(handler)
 

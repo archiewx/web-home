@@ -11,7 +11,7 @@ export default {
   },
   actions: {
     async requestDetail({ commit }, { id }) {
-      const res = await axios.get(`/blog/post/${id}`)
+      const res = await axios.get(`/blog/posts/${id}`)
       if (res.success) {
         return commit(types.REQUEST_POST_DETAIL, res.data)
       }

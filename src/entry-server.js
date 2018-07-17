@@ -17,12 +17,14 @@ export default (context) =>
     router.push(url)
     // 等到 router 将可能的异步组件和钩子函数解析完
     router.onReady(() => {
+      // resolve(app)
       const matchedComponents = router.getMatchedComponents()
       // 没有匹配到路由
       if (!matchedComponents.length) {
         // eslint-disable-next-line
         return reject({ code: 404 })
       }
+
       Promise.all(
         matchedComponents.map(({ asyncData }) => {
           if (asyncData) {

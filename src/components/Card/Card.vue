@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     lessTitle() {
-      return this.title.length < 20 ? title : title.slice(0, 20) + '...'
+      return this.title.length < 20 ? this.title : this.title.slice(0, 20) + '...'
     }
   }
 }

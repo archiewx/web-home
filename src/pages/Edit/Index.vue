@@ -10,7 +10,7 @@
       <input type="text" placeholder="输入标题" v-model="postTitle">
     </div>
     <div class="post-content">
-      <mavon-editor style="width: 100%; height: 100%; z-index: 2;" ref="mdEditor" v-model="post" v-bind="editProps" @save="handleEditSave" @change="handleEditChange" @imgAdd="handleImgAdd" @imgDel="handleImgDelete"></mavon-editor>
+      <mavon-editor style="width: 100%; height: 100%; z-index: 2;" class="v-note-wrapper markdown-body" ref="mdEditor" v-model="post" v-bind="editProps" @save="handleEditSave" @change="handleEditChange" @imgAdd="handleImgAdd" @imgDel="handleImgDelete"></mavon-editor>
     </div>
     <div class="post-footer top-border">
       <div class="btn btn-cancel" @click="handleBack">Back</div>

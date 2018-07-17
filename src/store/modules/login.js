@@ -21,7 +21,7 @@ export default {
         afterCallBack()
         return commit(types.REQUEST_AUTH_LOGIN, { data: res.data })
       }
-      commit(types.REQUEST_ERROR, { data: res }, { root: true })
+      // commit(types.REQUEST_ERROR, { data: res }, { root: true })
     }
   },
   mutations: {

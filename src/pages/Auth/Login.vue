@@ -21,8 +21,14 @@
               <input type="text" class="form-item__input" v-model="form.password">
             </div>
           </div>
-          <div class="btn btn-primary login-btn" @click="handleLogin">授 权</div>
+
+          <div class="btn btn-primary login-btn" @click="testAPI">授 权</div>
           <router-link class="login-back dog-fs-px-12" to="/">返回&gt;&gt;</router-link>
+          <div class="form-bottom">
+            <!-- <div id="fb-root">
+              <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="true"></div>
+            </div> -->
+          </div>
         </form>
       </div>
     </div>
@@ -39,6 +45,7 @@ export default {
       }
     }
   },
+  mounted() {},
   methods: {
     handleLogin() {
       this.$store.dispatch('login/requestLogin', {
@@ -46,6 +53,23 @@ export default {
         afterCallBack: () => {
           this.$router.push('/')
         }
+      })
+    },
+    loginFackBook() {
+      window.FB.login((response) => {
+        console.log(response)
+      })
+    },
+    checkState() {
+      window.FB.getLoginStatus(function(response) {
+        console.log(response)
+      })
+    },
+    testAPI() {
+      console.log('Welcome!  Fetching your information.... ')
+      window.FB.api('/me', function(response) {
+        console.log(response)
+        console.log('Successful login for: ' + response.name)
       })
     }
   }

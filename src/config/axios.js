@@ -1,6 +1,8 @@
 import axios from 'axios'
+import createStore from '../store'
 
 const isProd = process.env.NODE_ENV === 'production'
+const store = createStore()
 
 function request() {
   const instance = axios.create({
@@ -15,6 +17,9 @@ function request() {
   instance.interceptors.response.use(
     (response) => {
       if (response) {
+        if (!response.data.success) {
+          store.commit('REQUEST_ERROR', { data: response.data }, { root: true })
+        }
         return response.data
       }
       return {}

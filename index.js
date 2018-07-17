@@ -150,7 +150,7 @@ const server = require('http').createServer(app)
 
 server.listen(port, () => {
   console.log(`server started at http://localhost:${server.address().port}`)
-  process.send('ready')
+  process.send && process.send('ready')
 })
 
 process.on('SIGINT', () => {

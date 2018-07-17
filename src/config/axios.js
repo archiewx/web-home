@@ -5,7 +5,6 @@ const isProd = process.env.NODE_ENV === 'production'
 const isClient = !!this.document
 
 function request() {
-  let headers = {}
   if (isClient) {
     // 客户端操作
     NProgress.configure({
@@ -13,19 +12,21 @@ function request() {
       easing: 'ease',
       speed: 500
     })
-    const token = window ? window.sessionStorage.token : ''
-    if (token) {
-      headers.Authorization = 'bearer ' + token
-    }
   }
 
   const instance = axios.create({
-    baseURL: !isProd ? 'http://rap2api.taobao.org/app/mock/16336' : 'https://sys.luoyangfu.com',
-    headers
+    baseURL: !isProd ? 'http://rap2api.taobao.org/app/mock/16336' : 'https://sys.luoyangfu.com'
   })
   instance.interceptors.request.use(
     (config) => {
-      isClient && NProgress.start()
+      if (isClient) {
+        NProgress.start()
+        const token = window.sessionStorage.token
+        config.headers = config.headers || {}
+        if (token) {
+          config.headers.Authorization = 'bearer ' + token
+        }
+      }
       return config
     },
     (err) => Promise.reject(err)

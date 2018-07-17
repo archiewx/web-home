@@ -18,14 +18,14 @@ export default {
       if (res.success) {
         return commit(types.REQUEST_ME, { data: res.data })
       }
-      // commit(types.REQUEST_ERROR, { data: res }, { root: true })
+      // commit(types.SHOW_MESSAGE, { data: res }, { root: true })
     },
     async requestPosts({ commit }, { pageSize, page }) {
       const res = await axios.get('/blog/posts', { params: { pageSize, page } })
       if (res.success) {
         return commit(types.REQUEST_POST_LIST, { data: res.data })
       }
-      commit(types.REQUEST_ERROR, { data: res }, { root: true })
+      commit(types.SHOW_MESSAGE, { data: res }, { root: true })
     }
   },
   mutations: {

@@ -1,7 +1,7 @@
 // mutations type 定义
 
 // 请求错误
-export const REQUEST_ERROR = 'REQUEST_ERROR'
+export const SHOW_MESSAGE = 'SHOW_MESSAGE'
 
 // 请求个人信息
 export const REQUEST_ME = 'REQUEST_ME'

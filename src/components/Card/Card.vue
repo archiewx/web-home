@@ -3,7 +3,7 @@
    'card--border': bordered, 'dog-fs-px-14': true}">
     <div class="card__title dog-fs-px-16">
       <slot name="title">
-        {{title}}
+        {{title.length < 20 ? title : title.slice(0, 20) + '...'}}
       </slot>
       <div class="card__title card__title-extra clear">
         <slot name="title-extra">

@@ -122,13 +122,17 @@ export default {
       this.isDraft = false
       if (this.post && this.postTitle) {
         return this.$store.dispatch('edit/createPost', {
-          title: this.postTitle,
-          html: this.html,
-          md: this.post,
-          isDraft: this.isDraft
+          post: {
+            title: this.postTitle,
+            html: this.html,
+            md: this.post,
+            isDraft: this.isDraft
+          },
+          successCallback() {
+            this.$router.go(-1)
+          }
         })
       }
-      console.error('写标题,写东西啊')
     }
   }
 }

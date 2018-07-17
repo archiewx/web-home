@@ -10,13 +10,19 @@
         </div>
       </div>
     </transition>
-    <div class="drag-scroll" @mousedown="handleMouseDown" @mouseup="handleMouseUp" :style="{ left, top}">
+    <div v-if="enableScroll" class="drag-scroll" @mousedown="handleMouseDown" @mouseup="handleMouseUp" :style="{ left, top}">
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    enableScroll: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       isMouseDown: false,
@@ -45,6 +51,9 @@ export default {
       this.persistWidth = `${this.$el.clientWidth}px`
     },
     handleMouseDown(e) {
+      if (!this.enableScroll) {
+        return false
+      }
       this.isMouseDown = true
       if ((e.offsetX && e.offsetY) || e.offsetX === 0 || e.offsetY === 0) {
         this.initOffsetLeft = e.offsetX
@@ -58,6 +67,9 @@ export default {
       this.isMouseDown = false
     },
     handleMouseMove(e) {
+      if (!this.enableScroll) {
+        return false
+      }
       if (this.isMouseDown) {
         let mouseX = e.pageX - this.initOffsetLeft
         let mouseY = e.pageY - this.initOffsetTop

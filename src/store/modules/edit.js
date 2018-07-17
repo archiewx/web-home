@@ -7,13 +7,14 @@ export default {
   getters: {},
   actions: {
     async createPost({ commit }, payload) {
-      const res = await axios.post('/blog/post', payload)
+      const res = await axios.post('/blog/post', payload.post)
       if (res.success) {
+        payload.successCallback()
         return commit({
           type: types.REQUEST_CREATE_POST
         })
       }
-      commit(types.REQUEST_ERROR, { data: res }, { root: true })
+      commit(types.SHOW_MESSAGE, { data: res }, { root: true })
     }
   },
   mutations: {

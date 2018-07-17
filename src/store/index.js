@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { REQUEST_ERROR } from './mutation-types'
+import { SHOW_MESSAGE } from './mutation-types'
 import index from './modules/index'
 import editconfig from './modules/editconfig'
 import edit from './modules/edit'
@@ -25,14 +25,14 @@ export default function createStore() {
     },
     actions: {
       showError({ commit }, payload) {
-        commit(REQUEST_ERROR, { data: payload.data })
+        commit(SHOW_MESSAGE, { data: payload.data })
       }
     },
     getters: {
       getErrors: (state) => state.err
     },
     mutations: {
-      [REQUEST_ERROR](state, { data }) {
+      [SHOW_MESSAGE](state, { data }) {
         state.err = data
       }
     }

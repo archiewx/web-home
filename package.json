@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development supervisor -w index.js,build -n error --inspect -- index.js",
+    "predeploy": "git add . && git commit -m '增量开发中' && git push",
     "deploy": "pm2 deploy ecosystem.config.js production",
     "start": "NODE_ENV=production node index.js",
     "build": "rimraf dist && npm run build:client && npm run build:server",

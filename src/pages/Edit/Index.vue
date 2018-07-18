@@ -7,13 +7,14 @@
       </div>
     </div>
     <div class="post-title">
-      <input type="text" placeholder="输入标题" v-model="postTitle">
+      <input type="text" placeholder="input a title" v-model="postTitle">
     </div>
     <div class="post-content">
       <mavon-editor style="width: 100%; height: 100%; z-index: 2;" class="v-note-wrapper markdown-body" ref="mdEditor" v-model="post" v-bind="editProps" @save="handleEditSave" @change="handleEditChange" @imgAdd="handleImgAdd" @imgDel="handleImgDelete"></mavon-editor>
     </div>
     <div class="post-footer top-border">
       <div class="btn btn-cancel" @click="handleBack">Back</div>
+      <div class="btn btn-primary" @click="ignore = false">Upload Text</div>
       <div class="btn btn-primary" @click="handleCreatePost">Create a Post</div>
     </div>
   </div>
@@ -38,7 +39,7 @@ export default {
       html: '',
       postTitle: '',
       localEditConfig: {},
-      ignore: false,
+      ignore: true,
       baseUrl: 'http://p73z44sze.bkt.clouddn.com/',
       sourceMdFile: '',
       isDraft: false

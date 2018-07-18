@@ -120,6 +120,7 @@ export default {
     },
     handleCreatePost() {
       this.isDraft = false
+      const self = this
       if (this.post && this.postTitle) {
         return this.$store.dispatch('edit/createPost', {
           post: {
@@ -129,8 +130,8 @@ export default {
             isDraft: this.isDraft,
             mediaUrl: 'http://voidcanvas.com/wp-content/uploads/2014/01/JavaScript-logo.png'
           },
-          successCallback: () => {
-            console.log(this)
+          successCallback() {
+            self.$router.go(-1)
           }
         })
       }

@@ -1,6 +1,6 @@
 <template>
   <div class="dynamic-list">
-    <card :bordered="false" v-for="post in posts" :key="post.id" :description="post.description" :title="post.title" :title-extra="post.updateTime">
+    <card :bordered="false" v-for="post in posts" :key="post.id" :media-url="post.mediaUrl" :description="post.description" :title="post.title" :title-extra="post.updateTime">
       <div slot="card-footer-left" class="blog-card__footer-left">
         <span class="left-opts--item">
           <i class="iconfont icon-browse"></i>

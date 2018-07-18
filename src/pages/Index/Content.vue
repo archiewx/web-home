@@ -18,7 +18,7 @@
     <div class="page-content--center">
       <div :class="wrapperClass({ 'show-photo': true, 'back__our': true})"></div>
     </div>
-    <div :class="wrapperClass({ 'dynamic-links': true })" @scroll="handleSyncScroll">
+    <div :class="wrapperClass({ 'dynamic-links': true })">
       <dynamic-link></dynamic-link>
     </div>
     <div :class="wrapperClass({ 'create-post': true})">

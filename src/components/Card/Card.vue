@@ -11,7 +11,7 @@
         </slot>
       </div>
     </div>
-    <div class="card__media"></div>
+    <div class="card__media" :style="bg"></div>
     <div class="card__body">
       <slot name="body">
         {{description}}
@@ -47,6 +47,10 @@ export default {
       type: String,
       default: ''
     },
+    mediaUrl: {
+      type: String,
+      default: ''
+    },
     titleExtra: {
       type: String,
       default: ''
@@ -59,6 +63,12 @@ export default {
   computed: {
     lessTitle() {
       return this.title.length < 20 ? this.title : this.title.slice(0, 20) + '...'
+    },
+    bg() {
+      if (this.mediaUrl) {
+        return { backgroundImage: `url(${this.mediaUrl})` }
+      }
+      return {}
     }
   }
 }

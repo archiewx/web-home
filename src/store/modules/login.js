@@ -16,7 +16,7 @@ export default {
       if (!username || !password) {
         return commit(types.SHOW_MESSAGE, { data: { msg: '缺少用户名或者密码' } }, { root: true })
       }
-      const res = await axios.post('/blog/login', { username, password })
+      const res = await axios.post('/auth/login', { username, password })
       if (res.success) {
         afterCallBack()
         return commit(types.REQUEST_AUTH_LOGIN, { data: res.data })

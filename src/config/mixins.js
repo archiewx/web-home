@@ -17,10 +17,8 @@ export default {
   //   }
   // },
   beforeRouteUpdate(to, from, next) {
-    console.log('router update')
     const { asyncData } = this.$options
     if (asyncData) {
-      console.log('minxiin执行了')
       asyncData({
         store: this.$store,
         route: to

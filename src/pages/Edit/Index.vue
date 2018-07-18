@@ -126,10 +126,11 @@ export default {
             title: this.postTitle,
             html: this.html,
             md: this.post,
-            isDraft: this.isDraft
+            isDraft: this.isDraft,
+            mediaUrl: 'http://voidcanvas.com/wp-content/uploads/2014/01/JavaScript-logo.png'
           },
-          successCallback() {
-            this.$router.go(-1)
+          successCallback: () => {
+            console.log(this)
           }
         })
       }

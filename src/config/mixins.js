@@ -33,7 +33,7 @@ export default {
     // 这里使用mixin来控制权限
     if (this.$route.meta.private && !this.token) {
       this.$store.dispatch('showError', { data: { msg: '请先去授权(仅仅个人学习所用)' } })
-      this.$router.push('/login')
+      this.$router.push({ path: '/login', query: { redirect: this.$route.path } })
     }
   }
 }

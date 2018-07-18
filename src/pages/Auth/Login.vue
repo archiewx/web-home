@@ -18,7 +18,7 @@
           <div class="form-item">
             <label class="form-item__label">密码</label>
             <div class="form-item__wrapper">
-              <input type="text" class="form-item__input" v-model="form.password">
+              <input type="password" class="form-item__input" v-model="form.password">
             </div>
           </div>
 
@@ -47,11 +47,13 @@ export default {
   },
   mounted() {},
   methods: {
-    handleLogin() {
-      this.$store.dispatch('login/requestLogin', {
+    async handleLogin() {
+      const self = this
+      await this.$store.dispatch('login/requestLogin', {
         ...this.form,
-        afterCallBack: () => {
-          this.$router.push('/')
+        afterCallBack() {
+          const redirect = self.$route.query.redirect
+          self.$router.replace({ path: redirect })
         }
       })
     },

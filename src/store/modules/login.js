@@ -18,10 +18,11 @@ export default {
       }
       const res = await axios.post('/auth/login', { username, password })
       if (res.success) {
+        await commit(types.REQUEST_AUTH_LOGIN, { data: res.data })
         afterCallBack()
-        return commit(types.REQUEST_AUTH_LOGIN, { data: res.data })
+      } else {
+        commit(types.SHOW_MESSAGE, { data: res }, { root: true })
       }
-      commit(types.SHOW_MESSAGE, { data: res }, { root: true })
     }
   },
   mutations: {

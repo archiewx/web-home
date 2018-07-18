@@ -8,7 +8,7 @@
             <small class="dog-fs-px-12">(仅有自己使用，勿用)</small>
           </span>
         </div>
-        <form class="form">
+        <form class="form" @keydown.enter="handleLogin">
           <div class="form-item">
             <label class="form-item__label">用户名</label>
             <div class="form-item__wrapper">

@@ -1,6 +1,6 @@
 <template>
   <div class="page-content">
-    <div :class="wrapperClass({'section-links': true})">
+    <div v-if="shadow" :class="wrapperClass({'section-links': true})">
       <div class="static-lines dog-fs-px-14">
         It's me!
         <p>name: {{me.name}}</p>
@@ -18,7 +18,7 @@
     <div class="page-content--center">
       <div :class="wrapperClass({ 'show-photo': true, 'back__our': true})"></div>
     </div>
-    <div :class="wrapperClass({ 'dynamic-links': true })">
+    <div v-if="!shadow" :class="wrapperClass({ 'dynamic-links': true })">
       <dynamic-link></dynamic-link>
     </div>
     <div :class="wrapperClass({ 'create-post': true})">

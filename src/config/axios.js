@@ -15,7 +15,7 @@ function request() {
   }
 
   const instance = axios.create({
-    baseURL: !isProd ? 'http://localhost:3000' : 'https://sys.luoyangfu.com'
+    baseURL: !isProd ? 'http://localhost:3000' : 'https://api.luoyangfu.com'
   })
   instance.interceptors.request.use(
     (config) => {

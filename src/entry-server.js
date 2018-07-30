@@ -1,4 +1,5 @@
 import createApp from './app'
+import isServer from './utils/isServer'
 
 const isDev = process.env.NODE_ENV !== 'production'
 

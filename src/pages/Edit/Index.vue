@@ -129,7 +129,7 @@ export default {
             html: this.html,
             md: this.post,
             isDraft: this.isDraft,
-            mediaUrl: 'http://voidcanvas.com/wp-content/uploads/2014/01/JavaScript-logo.png'
+            mediaUrl: 'https://cdn-cos.luoyangfu.com/2018-07-30/cate/JavaScript-logo.png'
           },
           successCallback() {
             self.$router.go(-1)

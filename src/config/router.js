@@ -1,3 +1,4 @@
+import axios from '../config/axios'
 import isServer from '../utils/isServer'
 
 export default (router) => {
@@ -11,7 +12,7 @@ export default (router) => {
     next()
   })
   router.beforeResolve((to, from, next) => {
-    console.log('isServer', isServer())
+    axios.get('/stat/anony', { params: { url: location.href } })
     next()
   })
 }

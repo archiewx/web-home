@@ -8,11 +8,13 @@ import routerGuards from './config/router'
 import mixins from './config/mixins'
 import handler from './config/handler'
 import facebook from './config/facebook'
+import markdownIt from './config/markdownIt'
 
 Vue.use(mavonEditor)
 Vue.use(hotjar, { enabled: false })
 Vue.use(facebook, { enabled: false })
 Vue.use(handler)
+Vue.use(markdownIt(mavonEditor))
 
 Vue.mixin(mixins)
 

@@ -26,6 +26,12 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import Upload from '../../components/Upload/Upload.vue'
 
+const postCate = {
+  js: 'https://cdn-cos.luoyangfu.com/2018-07-30/cate/JavaScript-logo.png',
+  array: 'https://cdn-cos.luoyangfu.com/2018-07-31/cate/JavaScript-Array-logo.png',
+  webpack: 'https://cdn-cos.luoyangfu.com/2018-07-30/cate/webpack-logo.png'
+}
+
 export default {
   async asyncData({ store }) {
     await store.dispatch('editconfig/requestEditConfig')
@@ -86,12 +92,9 @@ export default {
     uploadFile(file, type = 'image') {
       const form = new FormData()
       form.append('file', file)
-      form.append('bucket', 'develop')
-      const date = dayjs().format('YYYY-MM-DD')
-      form.append('prefix', `home/${type}/${date}`)
-      form.append('region', 'z0')
+      form.append('dir', type)
       return axios
-        .post('https://util.wangxdog.cn/qiniu/upload', form)
+        .post('https://api.luoyangfu.com/util/upload', form)
         .then((res) => res.data)
         .then((res) => {
           const url = this.baseUrl + res.data.key
@@ -123,13 +126,17 @@ export default {
       this.isDraft = false
       const self = this
       if (this.post && this.postTitle) {
+        const cateFlag =
+          this.postTitle.indexOf('array') !== -1
+            ? 'array'
+            : this.postTitle.indexOf('webpack') !== -1 ? 'webpack' : 'js'
         return this.$store.dispatch('edit/createPost', {
           post: {
             title: this.postTitle,
             html: this.html,
             md: this.post,
             isDraft: this.isDraft,
-            mediaUrl: 'https://cdn-cos.luoyangfu.com/2018-07-30/cate/JavaScript-logo.png'
+            mediaUrl: postCate[cateFlag]
           },
           successCallback() {
             self.$router.go(-1)

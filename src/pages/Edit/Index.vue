@@ -44,7 +44,13 @@ export default {
       post: '',
       html: '',
       postTitle: '',
-      localEditConfig: {},
+      localEditConfig: {
+        externalLink: {
+          hljs_lang: (lang) => {
+            return `https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/lib/languages/${lang}.js`
+          }
+        }
+      },
       ignore: true,
       sourceMdFile: '',
       isDraft: false
@@ -80,8 +86,6 @@ export default {
       const render = new FileReader()
       render.readAsText(file)
       render.onload = () => {
-        const mdIt = this.$refs.mdEditor.markdownIt
-        console.log(mdIt.render(render.result))
         this.post = render.result
         this.postTitle = render.result.split('\n')[0]
         this.ignore = true
@@ -92,19 +96,12 @@ export default {
       const form = new FormData()
       form.append('file', file)
       form.append('dir', type)
-      return axios
-        .post('/util/upload', form)
-        .then((res) => {
-          const url = res.data.customUrl || res.data.url
-          return url
-        })
+      return axios.post('/util/upload', form).then((res) => {
+        const url = res.data.customUrl || res.data.url
+        return url
+      })
     },
     imageFilter(file) {
-      // 这里处理直接上传复制或者上传图片
-      /**
-       * 图片上传home/image/date/filename.ext
-       * md文件备案home/home/md/date/title.md
-       */
       if (!this.post) {
         return true
       }

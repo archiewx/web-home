@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import mavonEditor from 'mavon-editor'
+import './common/dynamicExternalLink'
 import 'mavon-editor/dist/css/index.css'
 import './styles/app.scss'
 import createApp from './app'

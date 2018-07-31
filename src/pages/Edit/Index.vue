@@ -46,7 +46,6 @@ export default {
       postTitle: '',
       localEditConfig: {},
       ignore: true,
-      baseUrl: 'http://p73z44sze.bkt.clouddn.com/',
       sourceMdFile: '',
       isDraft: false
     }
@@ -97,7 +96,7 @@ export default {
         .post('https://api.luoyangfu.com/util/upload', form)
         .then((res) => res.data)
         .then((res) => {
-          const url = this.baseUrl + res.data.key
+          const url = res.data.customUrl || res.data.url
           return url
         })
     },

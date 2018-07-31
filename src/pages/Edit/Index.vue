@@ -93,8 +93,7 @@ export default {
       form.append('file', file)
       form.append('dir', type)
       return axios
-        .post('https://api.luoyangfu.com/util/upload', form)
-        .then((res) => res.data)
+        .post('/util/upload', form)
         .then((res) => {
           const url = res.data.customUrl || res.data.url
           return url

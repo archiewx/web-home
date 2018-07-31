@@ -29,6 +29,8 @@
     "http-proxy-middleware": "^0.18.0",
     "lodash": "^4.17.10",
     "lru-cache": "^4.1.1",
+    "markdown-it": "^8.4.2",
+    "markdown-it-anchor": "^5.0.2",
     "mavon-editor": "^2.6.9",
     "memory-fs": "^0.4.1",
     "nprogress": "^0.2.0",

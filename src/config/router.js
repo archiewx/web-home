@@ -1,5 +1,6 @@
 import axios from '../config/axios'
 import isServer from '../utils/isServer'
+import clientId from '../utils/clientId'
 
 export default (router) => {
   router.beforeEach((to, from, next) => {
@@ -12,7 +13,6 @@ export default (router) => {
     next()
   })
   router.beforeResolve((to, from, next) => {
-    axios.get('/stat/anony', { params: { url: location.href } })
-    next()
+    axios.get('/stat/anony', { params: { url: location.href, guid: clientId() } })
   })
 }

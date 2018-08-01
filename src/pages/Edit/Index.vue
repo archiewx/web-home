@@ -45,11 +45,7 @@ export default {
       html: '',
       postTitle: '',
       localEditConfig: {
-        externalLink: {
-          hljs_lang: (lang) => {
-            return `https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/lib/languages/${lang}.js`
-          }
-        }
+        externalLink: {}
       },
       ignore: true,
       sourceMdFile: '',

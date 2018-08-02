@@ -2,7 +2,7 @@
  * @Author: zhenglfsir@gmail.com
  * @Date: 2018-08-01 17:13:38
  * @Last Modified by: zhenglfsir@gmail.com
- * @Last Modified time: 2018-08-01 17:31:29
+ * @Last Modified time: 2018-08-02 11:26:28
  */
 import { randomGuid } from './guid'
 

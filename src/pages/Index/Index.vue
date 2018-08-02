@@ -32,6 +32,8 @@ export default {
     PageCover,
     IndexContent
   },
+  methods: {
+  },
   created() {},
   destroyed() {
     // if (registered) {

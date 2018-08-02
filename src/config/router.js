@@ -14,5 +14,7 @@ export default (router) => {
   })
   router.beforeResolve((to, from, next) => {
     axios.get('/stat/anony', { params: { url: location.href, guid: clientId() } })
+    // 必须返回next
+    next()
   })
 }

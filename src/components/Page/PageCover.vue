@@ -32,7 +32,7 @@ export default {
       top: 0,
       fullWidth: '',
       width: '50vw',
-      persistWidth: ''
+      persistWidth: '100vw'
     }
   },
   mounted() {
@@ -44,6 +44,9 @@ export default {
     left(newVal) {
       this.width = newVal
     }
+  },
+  beforeDestroy() {
+    window.onresize = null
   },
   methods: {
     handleResize() {

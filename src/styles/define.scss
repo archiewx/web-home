@@ -21,10 +21,10 @@
   z-index: 1;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+  font-size: 16px;
 }
 // 样式快
 @mixin font-settings-av {
-  font-size: px2rem(16px);
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,21 +1,37 @@
 <template>
   <div class="edit">
-    <div class="post-tips" v-if="!ignore">
+    <div class="post-tips"
+      v-if="!ignore">
       <div class="post-tips__wrapper">
-        <upload tips="Upload a Md's File For Creating、Write In Browser Or Just Paste The Here!" :before-upload="handleBeforeUpload"></upload>
-        <div class="btn btn-warning" @click="ignore = true">Ignore</div>
+        <upload tips="Upload a Md's File For Creating、Write In Browser Or Just Paste The Here!"
+          :before-upload="handleBeforeUpload"></upload>
+        <div class="btn btn-warning"
+          @click="ignore = true">Ignore</div>
       </div>
     </div>
     <div class="post-title">
-      <input type="text" placeholder="input a title" v-model="postTitle">
+      <input type="text"
+        placeholder="input a title"
+        v-model="postTitle">
     </div>
     <div class="post-content">
-      <mavon-editor style="width: 100%; height: 100%; z-index: 2;" class="v-note-wrapper markdown-body" ref="mdEditor" v-model="post" v-bind="editProps" @save="handleEditSave" @change="handleEditChange" @imgAdd="handleImgAdd" @imgDel="handleImgDelete"></mavon-editor>
+      <mavon-editor style="width: 100%; height: 100%; z-index: 2;"
+        class="v-note-wrapper markdown-body"
+        ref="mdEditor"
+        v-model="post"
+        v-bind="editProps"
+        @save="handleEditSave"
+        @change="handleEditChange"
+        @imgAdd="handleImgAdd"
+        @imgDel="handleImgDelete"></mavon-editor>
     </div>
     <div class="post-footer top-border">
-      <div class="btn btn-cancel" @click="handleBack">Back</div>
-      <div class="btn btn-primary" @click="ignore = false">Upload Text</div>
-      <div class="btn btn-primary" @click="handleCreatePost">Create a Post</div>
+      <div class="btn btn-cancel"
+        @click="handleBack">Back</div>
+      <div class="btn btn-primary"
+        @click="ignore = false">Upload Text</div>
+      <div class="btn btn-primary"
+        @click="handleCreatePost">Create a Post</div>
     </div>
   </div>
 </template>
@@ -23,6 +39,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import dayjs from 'dayjs'
+import matter from 'gray-matter'
 import axios from '../../config/axios'
 import Upload from '../../components/Upload/Upload.vue'
 
@@ -49,7 +66,8 @@ export default {
       },
       ignore: true,
       sourceMdFile: '',
-      isDraft: false
+      isDraft: false,
+      mediaUrl: ''
     }
   },
   computed: {
@@ -77,13 +95,20 @@ export default {
       })
     },
     handleImgDelete() {},
+    handleCategories(cates) {
+      this.categories = cates.map((c) => ({ cateName: c.name, cateImg: c.img }))
+    },
     handleBeforeUpload(file) {
       this.sourceMdFile = file
       const render = new FileReader()
       render.readAsText(file)
       render.onload = () => {
-        this.post = render.result
-        this.postTitle = render.result.split('\n')[0]
+        const matterOb = matter(render.result)
+        const data = matterOb.data
+        this.handleCategories(data.categories)
+        this.postTitle = data.title
+        this.mediaUrl = data.mediaUrl || ''
+        this.post = matterOb.content
         this.ignore = true
       }
       return false
@@ -127,7 +152,8 @@ export default {
             html: this.html,
             md: this.post,
             isDraft: this.isDraft,
-            mediaUrl: postCate[cateFlag]
+            categories: this.categories,
+            mediaUrl: this.mediaUrl
           },
           successCallback() {
             self.$router.go(-1)

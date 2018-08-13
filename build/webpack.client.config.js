@@ -48,13 +48,13 @@ if (process.env.NODE_ENV === 'production') {
       cacheId: 'lyf',
       filename: 'sw.js',
       minify: true,
-      stripPrefix: 'dist',
+      stripPrefix: '/dist',
       staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
       staticFileGlobs: [
-        'dist/app.js',
-        'dist/*.js',
-        'dist/common.*.css',
-        'dist/*.png'
+        '/dist/app.js',
+        '/dist/*.js',
+        '/dist/common.*.css',
+        '/dist/*.png'
       ]
     })
   )

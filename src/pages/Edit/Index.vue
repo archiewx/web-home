@@ -88,6 +88,10 @@ export default {
       this.isDraft = true
     },
     handleEditChange(md, html) {
+      const matterOb = matter(md)
+      if (Object.keys(matterOb.data).length) {
+        this.handleMdFileContent(matterOb)
+      }
       this.html = html
     },
     handleImgAdd(filename, file) {
@@ -99,18 +103,23 @@ export default {
     handleCategories(cates) {
       this.categories = cates.map((c) => ({ cateName: c.name, cateImg: c.img }))
     },
+    handleMdFileContent(matterOb) {
+      const data = matterOb.data
+      this.handleCategories(data.categories)
+      this.$nextTick(() => {
+        this.postTitle = data.title
+        this.mediaUrl = data.mediaUrl || ''
+        this.description = data.description
+        this.post = matterOb.content
+      })
+    },
     handleBeforeUpload(file) {
       this.sourceMdFile = file
       const render = new FileReader()
       render.readAsText(file)
       render.onload = () => {
         const matterOb = matter(render.result)
-        const data = matterOb.data
-        this.handleCategories(data.categories)
-        this.postTitle = data.title
-        this.mediaUrl = data.mediaUrl || ''
-        this.description = data.description
-        this.post = matterOb.content
+        this.handleMdFileContent(matterOb)
         this.ignore = true
       }
       return false

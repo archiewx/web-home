@@ -1,16 +1,24 @@
 <template>
-  <div class="page-cover" @mousemove="handleMouseMove" @mouseleave="handleMouseUp">
+  <div class="page-cover"
+    @mousemove="handleMouseMove"
+    @mouseleave="handleMouseUp">
     <div class="page-cover__bg">
       <slot></slot>
     </div>
     <transition name="right-move">
-      <div class="page-cover__fg" :style="{width}">
-        <div class="page-cover__persist" :style="{width: persistWidth}">
+      <div class="page-cover__fg"
+        :style="{width}">
+        <div class="page-cover__persist"
+          :style="{width: persistWidth}">
           <slot name="shadow"></slot>
         </div>
       </div>
     </transition>
-    <div v-if="enableScroll" class="drag-scroll" @mousedown="handleMouseDown" @mouseup="handleMouseUp" :style="{ left, top}">
+    <div v-if="enableScroll"
+      class="drag-scroll"
+      @mousedown="handleMouseDown"
+      @mouseup="handleMouseUp"
+      :style="{ left, top}">
     </div>
   </div>
 </template>
@@ -52,6 +60,7 @@ export default {
     handleResize() {
       this.fullWidth = document.querySelector('.page-cover').clientWidth
       this.persistWidth = `${this.$el.clientWidth}px`
+      this.width = this.$el.clientWidth / 2 + 'px'
     },
     handleMouseDown(e) {
       if (!this.enableScroll) {

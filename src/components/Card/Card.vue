@@ -62,7 +62,7 @@ export default {
   },
   computed: {
     lessTitle() {
-      return this.title.length < 20 ? this.title : this.title.slice(0, 20) + '...'
+      return this.title.length < 30 ? this.title : this.title.slice(0, 20) + '...'
     },
     bg() {
       if (this.mediaUrl) {

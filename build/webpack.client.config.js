@@ -48,14 +48,13 @@ if (process.env.NODE_ENV === 'production') {
       cacheId: 'lyf',
       filename: 'sw.js',
       minify: true,
-      stripPrefix: base.output.path,
-      dontCacheBustUrlsMatching: /./,
+      stripPrefix: 'dist',
       staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
-      runtimeCaching: [
-        {
-          urlPattern: '/',
-          handler: 'networkFirst'
-        }
+      staticFileGlobs: [
+        'dist/app.js',
+        'dist/*.js',
+        'dist/common.*.css',
+        'dist/*.png'
       ]
     })
   )

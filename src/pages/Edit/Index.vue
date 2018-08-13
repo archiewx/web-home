@@ -68,7 +68,7 @@ export default {
       sourceMdFile: '',
       isDraft: false,
       mediaUrl: '',
-      desciption: '描述为空'
+      description: '描述为空'
     }
   },
   computed: {
@@ -109,7 +109,7 @@ export default {
         this.handleCategories(data.categories)
         this.postTitle = data.title
         this.mediaUrl = data.mediaUrl || ''
-        this.desciption = data.desciption
+        this.description = data.description
         this.post = matterOb.content
         this.ignore = true
       }
@@ -156,7 +156,7 @@ export default {
             isDraft: this.isDraft,
             categories: this.categories,
             mediaUrl: this.mediaUrl,
-            desciption: this.desciption
+            desciption: this.description
           },
           successCallback() {
             self.$router.go(-1)

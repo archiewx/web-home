@@ -10,6 +10,9 @@ import mixins from './config/mixins'
 import handler from './config/handler'
 import facebook from './config/facebook'
 import markdownIt from './config/markdownIt'
+import registerSW from './utils/registerSW'
+
+registerSW()
 
 Vue.use(mavonEditor)
 Vue.use(hotjar, { enabled: false })

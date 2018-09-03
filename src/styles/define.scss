@@ -12,7 +12,7 @@
   }
 }
 @mixin app {
-  @include font-settings-av;
+  @include font-settings-ls;
   color: color();
   width: 100%;
   margin: 0 auto;
@@ -32,6 +32,9 @@
 @mixin font-settings-hv {
   font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun,
     sans-serif;
+}
+@mixin font-settings-ls {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
 }
 
 @mixin create-fs($num) {

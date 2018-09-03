@@ -1,7 +1,7 @@
 import axios from 'axios'
 import NProgress from 'nprogress'
+import isDev from '../utils/isDev'
 
-const isProd = process.env.NODE_ENV === 'production'
 const isClient = () => !!global['document']
 
 function request() {
@@ -15,7 +15,7 @@ function request() {
   }
 
   const instance = axios.create({
-    baseURL: !isProd ? 'http://localhost:3000' : 'https://api.luoyangfu.com'
+    baseURL: isDev() ? 'http://localhost:3000' : 'https://api.luoyangfu.com'
   })
   instance.interceptors.request.use(
     (config) => {

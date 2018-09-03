@@ -1,3 +1,5 @@
 node_modules
 dist
 .vscode
+.cleanup.yaml
+.cleanup.*

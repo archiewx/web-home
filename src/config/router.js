@@ -1,5 +1,6 @@
 import axios from '../config/axios'
 import isServer from '../utils/isServer'
+import isDev from '../utils/isDev'
 import clientId from '../utils/clientId'
 
 export default (router) => {
@@ -13,7 +14,7 @@ export default (router) => {
     next()
   })
   router.beforeResolve((to, from, next) => {
-    axios.get('/stat/anony', { params: { url: location.href, guid: clientId() } })
+    !isDev() && axios.get('/stat/anony', { params: { url: location.href, guid: clientId() } })
     // 必须返回next
     next()
   })

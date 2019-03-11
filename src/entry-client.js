@@ -3,8 +3,6 @@ import mavonEditor from 'mavon-editor';
 import './common/dynamicExternalLink';
 import 'mavon-editor/dist/css/index.css';
 import './styles/iconfont.css';
-import './styles/common.scss';
-import './styles/components.scss';
 import './styles/app.scss';
 import createApp from './app';
 import hotjar from './config/hotjar';

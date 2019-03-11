@@ -19,7 +19,6 @@ function request() {
   });
   instance.interceptors.request.use(
     (config) => {
-      console.log(config.url);
       if (isClient()) {
         NProgress.start();
         const token = window.sessionStorage.token;

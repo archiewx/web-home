@@ -14,7 +14,7 @@ export default (router) => {
     next()
   })
   router.beforeResolve((to, from, next) => {
-    !isDev() && axios.get('/stat/anony', { params: { url: location.href, guid: clientId() } })
+    !isDev() && axios.get('/stat/annoy', { params: { url: location.href, guid: clientId() } })
     // 必须返回next
     next()
   })

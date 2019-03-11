@@ -1,8 +1,8 @@
-import axios from 'axios'
-import NProgress from 'nprogress'
-import isDev from '../utils/isDev'
+import axios from 'axios';
+import NProgress from 'nprogress';
+import isDev from '../utils/isDev';
 
-const isClient = () => !!global['document']
+const isClient = () => !!global['document'];
 
 function request() {
   if (isClient) {
@@ -10,38 +10,39 @@ function request() {
     NProgress.configure({
       minimum: 0.1,
       easing: 'ease',
-      speed: 500
-    })
+      speed: 500,
+    });
   }
 
   const instance = axios.create({
-    baseURL: isDev() ? 'http://localhost:3000' : 'https://api.luoyangfu.com'
-  })
+    baseURL: isDev() ? 'http://localhost:3000' : 'https://api.luoyangfu.com',
+  });
   instance.interceptors.request.use(
     (config) => {
+      console.log(config.url);
       if (isClient()) {
-        NProgress.start()
-        const token = window.sessionStorage.token
-        config.headers = config.headers || {}
+        NProgress.start();
+        const token = window.sessionStorage.token;
+        config.headers = config.headers || {};
         if (token) {
-          config.headers.Authorization = 'bearer ' + token
+          config.headers.Authorization = token;
         }
       }
-      return config
+      return config;
     },
     (err) => Promise.reject(err)
-  )
+  );
   instance.interceptors.response.use(
     (response) => {
-      isClient() && NProgress.done()
+      isClient() && NProgress.done();
       if (response) {
-        return response.data
+        return response.data;
       }
-      return {}
+      return {};
     },
     (err) => Promise.reject(err)
-  )
-  return instance
+  );
+  return instance;
 }
 
-export default request()
+export default request();

@@ -3,7 +3,7 @@
     <card :bordered="false"
       v-for="post in posts"
       :key="post.id"
-      :media-url="post.mediaUrl || post.cates[0].catImg"
+      :media-url="post.mediaUrl || post.catList[0].catImg"
       :description="post.description"
       :title="post.title"
       :title-extra="post.updateTime">

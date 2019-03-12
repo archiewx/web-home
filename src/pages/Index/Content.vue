@@ -21,11 +21,11 @@
     <div v-if="!shadow" :class="wrapperClass({ 'dynamic-links': true })">
       <dynamic-link></dynamic-link>
     </div>
-    <div :class="wrapperClass({ 'create-post': true})">
+    <!-- <div :class="wrapperClass({ 'create-post': true})">
       <span @click="handleToEdit">
         <i class="iconfont icon-edit"></i>
       </span>
-    </div>
+    </div> -->
   </div>
 </template>
 

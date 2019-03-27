@@ -133,7 +133,7 @@ app.get(
       }
 )
 
-const port = process.env.PORT || 3003
+const port = process.env.PORT || 3001
 
 const server = require('http').createServer(app)
 

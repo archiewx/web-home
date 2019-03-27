@@ -15,6 +15,5 @@
     "transform-vue-jsx",
     "transform-runtime",
     "syntax-dynamic-import",
-    "transform-optional-chaining"
   ]
 }

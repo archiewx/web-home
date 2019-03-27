@@ -12,14 +12,14 @@ export default {
   actions: {
     async requestEditConfig({ commit }) {
       const res = await axios.get('/config/editor')
-      if (res.success) {
-        return commit(types.REQUEST_EIDT_CONFIG, { data: res.data })
+      if (res) {
+        return commit(types.REQUEST_EDIT_CONFIG, { data: res.data })
       }
       commit(types.SHOW_MESSAGE, { data: res }, { root: true })
     }
   },
   mutations: {
-    [types.REQUEST_EIDT_CONFIG](state, { data }) {
+    [types.REQUEST_EDIT_CONFIG](state, { data }) {
       state.md = data.md
     }
   }

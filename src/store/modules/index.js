@@ -15,14 +15,14 @@ export default {
   actions: {
     async requestMe({ commit }) {
       const res = await axios.get('/blog/me');
-      if (res.success) {
+      if (res) {
         return commit(types.REQUEST_ME, { data: res.data });
       }
       // commit(types.SHOW_MESSAGE, { data: res }, { root: true })
     },
     async requestPosts({ commit }, { pageSize, page }) {
       const res = await axios.get('/blog/posts', { params: { pageSize, page } });
-      if (res.success) {
+      if (res) {
         return commit(types.REQUEST_POST_LIST, { data: res.data });
       }
       commit(types.SHOW_MESSAGE, { data: res }, { root: true });

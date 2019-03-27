@@ -34,10 +34,10 @@ function request() {
   instance.interceptors.response.use(
     (response) => {
       isClient() && NProgress.done();
-      if (response) {
+      if (response.errCode === 0) {
         return response.data;
       }
-      return {};
+      return null;
     },
     (err) => Promise.reject(err)
   );

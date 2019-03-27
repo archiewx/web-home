@@ -15,7 +15,7 @@ export default {
   actions: {
     async requestDisqus({ commit }) {
       const res = await axios.get('/config/comments/disqus')
-      if (res.success) {
+      if (res) {
         return commit(types.REQUEST_DISQUS_CONFIG, { data: res.data })
       }
       commit(types.SHOW_MESSAGE, { data: res }, { root: true })

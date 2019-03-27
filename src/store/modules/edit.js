@@ -8,7 +8,7 @@ export default {
   actions: {
     async createPost({ commit }, payload) {
       const res = await axios.post('/blog/post', payload.post)
-      if (res.success) {
+      if (res) {
         payload.successCallback()
         return commit({
           type: types.REQUEST_CREATE_POST

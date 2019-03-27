@@ -123,17 +123,6 @@ function render(req, res) {
     }
   })
 }
-// 设置代理
-// app.use(
-//   '/api',
-//   proxy({
-//     target: !isProd ? 'http://rap2api.taobao.org/app/mock/16336' : 'http://sys.luoyangfu.cn',
-//     changeOrigin: true,
-//     pathRewrite: {
-//       '^/api': ''
-//     }
-//   })
-// )
 
 app.get(
   '*',
@@ -144,7 +133,7 @@ app.get(
       }
 )
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3003
 
 const server = require('http').createServer(app)
 
